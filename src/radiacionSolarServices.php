@@ -12,17 +12,13 @@ class bcwc_radiacionSolarServices{
 
 	function cliente(){
 		return '
-			<div class="bcwc_wrapper">
-					<h3>
-						<span class="bcwc_rs_comuna">Radiación solar en </span>
-						<a href="http://www.meteochile.gob.cl/radiacion_uv.php" target="_blank">
-							<img class="bcwc_icon" src="'. BCWC_URL .'img/hyperlink.png" title="Dirección Meteorológica de Chile" />
-						</a>
-					</h3>
-					<img class="bcwc_icon bcwc_rs_loading" src="'. BCWC_URL .'img/loading.gif" />
-					<span class="bcwc_rs_obs"></span><span class="bcwc_rs_obs_fecha"></span><br/>
-					<span class="bcwc_rs_pro"></span><span class="bcwc_rs_pro_fecha"></span>
-			</div>
+			<li>
+				<span class="bcwc_rs_comuna">Radiación solar en </span>
+				<img class="bcwc_icon bcwc_rs_loading" src="'. BCWC_URL .'img/loading.gif" />
+				<a href="http://www.meteochile.gob.cl/radiacion_uv.php" target="_blank"><img class="bcwc_icon" src="'. BCWC_URL .'img/hyperlink.png" title="Dirección Meteorológica de Chile" /></a>
+				<span class="bcwc_rs_obs"></span><span class="bcwc_rs_obs_fecha"></span><br/>
+				<span class="bcwc_rs_pro"></span><span class="bcwc_rs_pro_fecha"></span>
+			</li>
 		';
 	}
 

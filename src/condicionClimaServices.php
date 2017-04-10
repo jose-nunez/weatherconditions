@@ -15,14 +15,13 @@ class bcwc_condicionClimaServices{
 	
 	function cliente(){
 		return '
-			<div class="bcwc_wrapper">
-				<h3>Temperatura 
+			<li>
+				Temperatura 
 				<span class="bcwc_cc_temp"></span>
 				<img class="bcwc_icon bcwc_cc_icono" src="'. BCWC_URL .'img/loading.gif" />
 				<span class="bcwc_cc_descripcion"></span><br/>
-				</h3>
 				<span class="bcwc_cc_tmax"></span><span class="bcwc_cc_tmin"></span><span class="bcwc_cc_humedad"></span>
-			</div>
+			</li>
 		';
 	}
 

@@ -152,9 +152,9 @@ class bcWeatherConditions{
 
 	function cliente($servicios){
 		$this->loadServices($servicios);
-		$result = '';
+		$result = '<ul>';
 		if(in_array('td',$servicios)){
-			$result .= '<h3>Hoy es <span class="bcwc_today"></span></h3>';
+			$result .= '<li>Hoy es <span class="bcwc_today"></span></li>';
 		}
 		if(in_array('cc',$servicios)){
 			global $bcwc_condicionClima;
@@ -168,7 +168,7 @@ class bcWeatherConditions{
 			global $bcwc_radiacionSolar;
 			$result .= $bcwc_radiacionSolar->cliente();
 		}
-		return $result;
+		return $result.'</ul>';
 	}
 
 	/* ADMINISTRACIÓN ***********************************************************/

@@ -14,17 +14,13 @@ class bcwc_calidadAireServices{
 
 	function cliente(){
 		return '
-			<div class="bcwc_wrapper">
-					<h3>
-						<span class="bcwc_ca_comuna">Calidad del aire </span>
-						<span class="bcwc_ca_status"></span>
-						<img class="bcwc_icon bcwc_ca_loading" src="'. BCWC_URL .'img/loading.gif" />
-						<a href="http://sinca.mma.gob.cl/" target="_blank">
-							<img class="bcwc_icon" src="'. BCWC_URL .'img/hyperlink.png" title="Sistema de Información Nacional de Calidad del Aire"/>
-						</a>
-					</h3> 
+			<li>
+				<span class="bcwc_ca_comuna">Calidad del aire </span>
+				<span class="bcwc_ca_status"></span>
+				<img class="bcwc_icon bcwc_ca_loading" src="'. BCWC_URL .'img/loading.gif" />
+				<a href="http://sinca.mma.gob.cl/" target="_blank"><img class="bcwc_icon" src="'. BCWC_URL .'img/hyperlink.png" title="Sistema de Información Nacional de Calidad del Aire"/></a>
 				<img style="display:none;" class="bcwc_icon bcwc_ca_icon" src="" />
-			</div>
+			</li>
 		';
 	}
 
