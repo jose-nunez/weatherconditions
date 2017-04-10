@@ -46,7 +46,7 @@ class bcWeatherConditions{
 	function init(){
 		add_action('admin_menu',array($this,'menu'));
 
-		wp_register_style('bcwc_css',BCWC_URL.'style/style.css');
+		wp_register_style('bcwc_css',BCWC_URL.'css/style.css');
 
 		wp_register_script('bcwc_amin_js',BCWC_URL.'js/bc_weatherconditions_admin.js','jquery');
 		// wp_register_script('bcwc_amin_js',BCWC_URL.'js/calidadAireAdmin.js','jquery');
@@ -150,7 +150,7 @@ class bcWeatherConditions{
 		return $this->cliente($atts);
 	}
 
-	function cliente($servicios,$today_ids){
+	function cliente($servicios){
 		$this->loadServices($servicios);
 		$result = '';
 		if(in_array('td',$servicios)){

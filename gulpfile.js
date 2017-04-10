@@ -22,7 +22,7 @@ var imagemin = require('gulp-imagemin');
 var src_dir = "src/";
 var lib_dir = 'lib/';
 
-var build_dir = "dist/";
+var build_dir = "E:/Dropbox/DESARROLLO/Wordpress/TEST/wp-content/plugins/weatherconditions/";
 var dist_dir = "dist/";
 
 

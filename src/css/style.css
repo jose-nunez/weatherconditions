@@ -1,0 +1,30 @@
+.bcwc_icon{
+	vertical-align:middle;
+}
+
+.indice_uv,.bcwc_ca_status{
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
+}
+.indice_uv.bajo{background:#8BD500;}
+.indice_uv.moderado{background:#F8E814;}
+.indice_uv.alto{background:#F67E01;}
+.indice_uv.muyalto{background:#EC2838;}
+.indice_uv.extremo{background:#9B6DC6;}
+
+.bcwc_ca_status.bueno{background:#2EAE00;}
+.bcwc_ca_status.regular{background:#F5E23D;}
+.bcwc_ca_status.alerta{background:#F5713D;}
+.bcwc_ca_status.preemergencia{background:#F52424;}
+.bcwc_ca_status.emergencia{background:#B33DF5;}
+.bcwc_ca_status.preliminar{background:#006CB7;}
+.bcwc_ca_status.nodisponible{background:#B4B4B4;}
+
+.bcwc_wrapper{
+	font-size: 1.3rem;
+}
+.bcwc_wrapper h3{
+	margin-bottom: 2px;
+	margin-top: 5px;
+}
