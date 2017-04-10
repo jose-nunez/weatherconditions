@@ -48,11 +48,12 @@ var calidadAireClass = function(){
 			iconos.push(['Preemergencia',"preemergencia.png"]);
 			iconos.push(['Emergencia',"emergencia.png"]);
 			iconos.push(['datos',"datos.png"]);
-			
+			// nombre comuna
 			jQuery('.bcwc_ca_loading').css('display','none');
 			jQuery('.bcwc_ca_status').html('<strong>'+iconos[estacion.estado][0]+' </strong>');
 			jQuery('.bcwc_ca_status').removeClass('bueno regular alerta preemergencia emergencia preliminar nodisponible');
 			jQuery('.bcwc_ca_status').addClass(iconos[estacion.estado][0].toLowerCase());
+			jQuery('.bcwc_ca_status').attr('title',estacion.nombre+', '+estacion.comuna);
 		}
 		else{
 			jQuery('.bcwc_ca_loading').css('display','');

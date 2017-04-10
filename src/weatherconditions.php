@@ -96,7 +96,7 @@ class bcWeatherConditions{
 		}
 
 	}
-	function globalParams($servicios){
+	function globalParams($servicios=false){
 		$bcwc_use_html5_location = get_option('bcwc_use_html5_location');
 		$initP = $this->getIPLocation();
 		?>
