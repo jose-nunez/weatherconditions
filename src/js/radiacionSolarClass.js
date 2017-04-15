@@ -2,13 +2,13 @@
 var radiacionSolarClass = function(){
 	var self = this;
 
-	self.getNearestStation = function(){
+	self.getNearestStation = function(latlng_position){
 		jQuery.ajax({
 			type: 'POST',
 			url: bcwc_baseUrl + '/wp-admin/admin-ajax.php',
 			data: {
 				action: 'bcwc_rs_getNearestStation',
-				latlng: init_position
+				latlng: latlng_position
 			},
 			success: function(data, textStatus, XMLHttpRequest){
 				console.log(data);
@@ -18,7 +18,7 @@ var radiacionSolarClass = function(){
 		});
 	}
 
-	self.getState = function(){
+	self.getState = function(latlng_position){
 		/*
 		lf {lat:-33.530520095021416,lng:-70.55797576904297}
 		pte alto {lat:-33.607185251256205,lng:-70.5758285522461}
@@ -34,7 +34,7 @@ var radiacionSolarClass = function(){
 			url: bcwc_baseUrl + '/wp-admin/admin-ajax.php',
 			data: {
 				action: 'bcwc_rs_getState',
-				latlng: init_position
+				latlng: latlng_position
 			},
 			success: function(data, textStatus, XMLHttpRequest){
 				// self.printState(JSON.parse(data));

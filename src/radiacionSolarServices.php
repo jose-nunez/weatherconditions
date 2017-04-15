@@ -22,6 +22,8 @@ class bcwc_radiacionSolarServices{
 		';
 	}
 
+	// http://archivos.meteochile.gob.cl/portaldmc/meteochile/js/indice_radiacion.js
+
 	function loadStations(){
 		$estaciones = array(
 			'ARICA' => 										array('clave'=>'ARICA','url'=>'http://www.meteochile.gob.cl/js/uv_scar.js','latlng'=>array('lat'=>-18.3,'lng'=>-70.316))

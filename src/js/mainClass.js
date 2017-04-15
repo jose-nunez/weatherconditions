@@ -48,7 +48,9 @@ var bcwc_mainClass = function(){
 		}
 	}
 	self.callServices = function(functions){
-		var fn;for(var i=0;i<functions.length;i++){fn = functions[i];fn();}
+		for(var i=0;i<functions.length;i++){
+			(functions[i])(init_position);
+		}
 	}
 
 	self.init = function(){
@@ -73,8 +75,10 @@ var bcwc_mainClass = function(){
 	}
 }
 
+var bcwc_main;
+
 jQuery(document).ready(function(){
-	var bcwc_main = new bcwc_mainClass();
+	bcwc_main = new bcwc_mainClass();
 	bcwc_main.init();
 });
 /*

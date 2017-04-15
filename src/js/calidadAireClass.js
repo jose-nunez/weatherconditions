@@ -2,13 +2,13 @@
 var calidadAireClass = function(){
 	var self = this;
 
-	self.getNearestStation = function(){
+	self.getNearestStation = function(latlng_position){
 		jQuery.ajax({
 			type: 'POST',
 			url: bcwc_baseUrl + '/wp-admin/admin-ajax.php',
 			data: {
 				action: 'bcwc_ca_getNearestStation',
-				latlng: init_position
+				latlng: latlng_position
 			},
 			success: function(data, textStatus, XMLHttpRequest){
 				console.log(data);
@@ -18,7 +18,7 @@ var calidadAireClass = function(){
 		});
 	}
 
-	self.getState = function(){
+	self.getState = function(latlng_position){
 		
 		self.printState();
 
@@ -27,7 +27,7 @@ var calidadAireClass = function(){
 			url: bcwc_baseUrl + '/wp-admin/admin-ajax.php',
 			data: {
 				action: 'bcwc_ca_getState',
-				latlng: init_position
+				latlng: latlng_position
 			},
 			success: function(data, textStatus, XMLHttpRequest){
 				self.printState(JSON.parse(data));

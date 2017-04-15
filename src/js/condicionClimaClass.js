@@ -2,7 +2,7 @@
 var condicionClimaClass = function(){
 	var self = this;
 
-	self.getState = function(){
+	self.getState = function(latlng_position){
 		
 		self.printState();
 
@@ -11,7 +11,7 @@ var condicionClimaClass = function(){
 			url: bcwc_baseUrl + '/wp-admin/admin-ajax.php',
 			data: {
 				action: 'bcwc_cc_getState',
-				latlng: init_position
+				latlng: latlng_position
 			},
 			success: function(data, textStatus, XMLHttpRequest){
 				self.printState(JSON.parse(data));
