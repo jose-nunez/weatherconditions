@@ -90,3 +90,18 @@ jQuery(document).ready(function(){
 		cuchufleta= {lat:-53.2257684357902,lng:-71.103515625}; // pta arenas
 		cuchufleta= {-33.34314878808268,lng:-70.78628540039062}; // quilicura
 */
+
+var deg2rad = function(degrees){return degrees * Math.PI / 180;};
+var rad2deg = function(radians){return radians * 180 / Math.PI;};
+function distancia(latlng1,latlng2){
+	var lat1 = latlng1['lat'];
+	var lon1 = latlng1['lng'];
+	var lat2 = latlng2['lat'];
+	var lon2 = latlng2['lng'];
+	var theta = lon1 - lon2;
+	var dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+	dist = Math.acos(dist);
+	dist = rad2deg(dist);
+	miles = dist * 60 * 1.1515;
+	return (miles * 1.609344);
+}

@@ -13,6 +13,7 @@ class bcwc_radiacionSolarServices{
 	function cliente(){
 		return '
 			<li>
+				<script src="http://archivos.meteochile.gob.cl/portaldmc/meteochile/js/indice_radiacion.js"></script>
 				<span class="bcwc_rs_comuna">Radiación solar en </span>
 				<img class="bcwc_icon bcwc_rs_loading" src="'. BCWC_URL .'img/loading.gif" />
 				<a href="http://www.meteochile.gob.cl/radiacion_uv.php" target="_blank"><img class="bcwc_icon" src="'. BCWC_URL .'img/hyperlink.png" title="Dirección Meteorológica de Chile" /></a>
@@ -21,8 +22,6 @@ class bcwc_radiacionSolarServices{
 			</li>
 		';
 	}
-
-	// http://archivos.meteochile.gob.cl/portaldmc/meteochile/js/indice_radiacion.js
 
 	function loadStations(){
 		$estaciones = array(

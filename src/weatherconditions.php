@@ -144,7 +144,6 @@ class bcWeatherConditions{
 		$url = "http://freegeoip.net/json/".$this->get_client_ip();
 		$json = file_get_contents($url);
 		$content = json_decode($json, true);
-		echo '<pre>'. print_r($this->get_client_ip(),true) . '</pre><pre>' . print_r($content,true) . '</pre>';
 		if($content['latitude'] && $content['longitude'])
 			return array('lat'=>$content['latitude'],'lng'=>$content['longitude']);
 		else 
