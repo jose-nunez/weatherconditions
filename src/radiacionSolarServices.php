@@ -63,9 +63,7 @@ class bcwc_radiacionSolarServices{
 	function getNearestStationService(){
 		die($this->getNearestStation($_POST['latlng']));
 	}
-	function getNearestStation($latlng,$exclude){
-		if(!$exclude) $exclude = array();
-
+	function getNearestStation($latlng,$exclude = []){
 		$estaciones = get_option('bcwc_rs_stations');
 		$miEstacion = null;
 		$dist = 9999999;
