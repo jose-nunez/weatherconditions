@@ -45,18 +45,9 @@ class bcWeatherConditions{
 	/* INICIACION ************************************************************/
 	function init(){
 		add_action('admin_menu',array($this,'menu'));
-
 		wp_register_style('bcwc_css',BCWC_URL.'css/style.css');
-
-		wp_register_script('bcwc_amin_js',BCWC_URL.'js/bc_weatherconditions_admin.js','jquery');
-		// wp_register_script('bcwc_amin_js',BCWC_URL.'js/calidadAireAdmin.js','jquery');
-		
-		wp_register_script('bcwc_js',BCWC_URL.'js/bc_weatherconditions.js','jquery');
-		/*wp_register_script('bcwc_mainClass',BCWC_URL.'js/mainClass.js','jquery');
-		wp_register_script('bcwc_radiacionSolarClass',BCWC_URL.'js/radiacionSolarClass.js','jquery');
-		wp_register_script('bcwc_condicionClimaClass',BCWC_URL.'js/condicionClimaClass.js','jquery');
-		wp_register_script('bcwc_calidadAireClass',BCWC_URL.'js/calidadAireClass.js','jquery');
-		/**/
+		wp_register_script('bcwc_amin_js',BCWC_URL.'js/bc_weatherconditions_admin.min.js','jquery');
+		wp_register_script('bcwc_js',BCWC_URL.'js/bc_weatherconditions.min.js','jquery');
 
 		require_once 'calidadAireServices.php';global $bcwc_calidadAire; if(!$bcwc_calidadAire) $bcwc_calidadAire = new bcwc_calidadAireServices();
 		$bcwc_calidadAire->initServices();
@@ -83,15 +74,8 @@ class bcWeatherConditions{
 	function loadServices($servicios){
 		if(!$this->services_loaded){
 			if(wp_style_is('bcwc_css','registered') && !wp_style_is('bcwc_css','enqueued')) wp_enqueue_style('bcwc_css');
-						
 			if(wp_script_is('bcwc_js','registered') && !wp_script_is('bcwc_js','enqueued')) wp_enqueue_script('bcwc_js');
-			/*if(wp_script_is('bcwc_mainClass','registered') && !wp_script_is('bcwc_mainClass','enqueued')) wp_enqueue_script('bcwc_mainClass');
-			if(wp_script_is('bcwc_radiacionSolarClass','registered') && !wp_script_is('bcwc_radiacionSolarClass','enqueued')) wp_enqueue_script('bcwc_radiacionSolarClass');
-			if(wp_script_is('bcwc_condicionClimaClass','registered') && !wp_script_is('bcwc_condicionClimaClass','enqueued')) wp_enqueue_script('bcwc_condicionClimaClass');
-			if(wp_script_is('bcwc_calidadAireClass','registered') && !wp_script_is('bcwc_calidadAireClass','enqueued')) wp_enqueue_script('bcwc_calidadAireClass');*/
-			
 			$this->globalParams($servicios);
-
 			$this->services_loaded = true;//Para no cargar parametros dos veces
 		}
 
