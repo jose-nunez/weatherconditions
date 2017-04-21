@@ -5,6 +5,7 @@ class AdminPage{
 		if(!isset( $_REQUEST['updated'])) $_REQUEST['updated'] = false;
 
 		$bcwc_use_html5_location = get_option('bcwc_use_html5_location');
+		$bcwc_demoId=get_option('bcwc_demoId');
 
 		?>
 
@@ -13,6 +14,7 @@ class AdminPage{
 		<p>
 		<form action="options.php" method="post">
 		<?php 
+
 			// wp_nonce_field('update-options');
 			settings_fields('bcwc_setting');
 			// do_settings_sections('bcwc_setting');
@@ -26,6 +28,10 @@ class AdminPage{
 						<input name="bcwc_use_html5_location" type="checkbox" <?php echo $bcwc_use_html5_location?'checked="checked"':''; ?> />
 						Usar localización HTML5
 					</label>
+				</tr>
+				<tr valign="middle">
+					<th scope="row">ID de la página que mostrará la Demo</th>
+					<td><input type="text" name="bcwc_demoId" value="<?php echo $bcwc_demoId; ?>" /></td>
 				</tr>
 			</table>
 			<?php submit_button();?>

@@ -35,9 +35,11 @@ class bcWeatherConditions{
 		$bcwc_radiacionSolar->loadStations();
 
 		add_option('bcwc_use_html5_location',true);
+		add_option('bcwc_demoId',true);
 	}
 	function uninstall(){
 		delete_option('bcwc_use_html5_location');
+		delete_option('bcwc_demoId');
 		delete_option('bcwc_ca_stations');
 		delete_option('bcwc_rs_stations');
 	}
@@ -58,8 +60,26 @@ class bcWeatherConditions{
 		require_once 'condicionClimaServices.php';global $bcwc_condicionClima; if(!$bcwc_condicionClima) $bcwc_condicionClima = new bcwc_condicionClimaServices();
 		$bcwc_condicionClima->initServices();
 
+		/*require_once 'mapDemo.php';global $bcwc_condicionClima; if(!$bcwc_condicionClima) $bcwc_condicionClima = new bcwc_condicionClimaServices();
+		$bcwc_condicionClima->initServices();*/
+
 		add_action('widgets_init', array($this,'widgets'));
 		add_shortcode('bicicultura-weatherconditions',array($this,'shortcode'));
+
+
+		add_filter('page_template',array($this, 'printDemo'));
+
+	}
+	
+	function printDemo($single_template) {
+		global $post;
+
+		$page_id = get_option('bcwc_demoId');
+		if ($post->ID == $page_id) {
+			$single_template = dirname( __FILE__ ) . '/mapDemo.php';
+		}
+
+		return $single_template;
 	}
 	
 
@@ -203,6 +223,7 @@ class bcWeatherConditions{
 	}
 	function register_settings(){
 		register_setting('bcwc_setting','bcwc_use_html5_location');
+		register_setting('bcwc_setting', 'bcwc_demoId');
 	}
 	function options(){
 		if ( !current_user_can( 'manage_options' ) )  {
