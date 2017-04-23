@@ -114,7 +114,6 @@ var radiacionSolarClass = function(){
 
 	}
 	self.getClassIndice = function(indice){
-		console.log('a sacar la clase'+indice);
 		if(indice.indexOf('11')!=-1) return 'extremo';
 		else if(indice.indexOf('8')!=-1 || indice.indexOf('9')!=-1 || indice.indexOf('10')!=-1) return 'muyalto';
 		else if(indice.indexOf('6')!=-1 || indice.indexOf('7')!=-1) return 'alto';

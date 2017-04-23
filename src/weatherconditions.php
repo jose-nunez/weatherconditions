@@ -67,12 +67,16 @@ class bcWeatherConditions{
 		add_action('widgets_init', array($this,'widgets'));
 		add_shortcode('bicicultura-weatherconditions',array($this,'shortcode'));
 		
-
 		
-		wp_register_script('bcwc_demo_js',BCWC_URL.'js/bc_weatherconditions_demo.min.js','jquery');
+		wp_register_script('leaflet',BCWC_URL.'lib/leaflet.min.js');
+		wp_register_style('leaflet_css',BCWC_URL.'lib/leaflet.css');
+		wp_register_script('leaflet-providers',BCWC_URL.'lib/leaflet-providers.min.js','leaflet');
+		
+		wp_register_script('bcwc_demo_js',BCWC_URL.'js/bc_weatherconditions_demo.min.js','leaflet');
 		wp_register_style('bcwc_demo_css',BCWC_URL.'css/style_demo.css');
-		wp_register_script('leaflet',BCWC_URL.'lib/leaflet.min.js','jquery');
-		wp_register_script('leaflet-providers',BCWC_URL.'lib/leaflet-providers.min.js','jquery');
+		
+		require_once 'mapDemo.php';global $bcwc_demo; if(!$bcwc_demo) $bcwc_demo = new WeatherContidionsMapDemo();
+		$bcwc_demo->initServices();
 		add_shortcode('bicicultura-weatherconditions-map',array($this,'shortcode_demo'));
 
 
@@ -227,9 +231,8 @@ class bcWeatherConditions{
 
 	// [bicicultura-weatherconditions-map]
 	function shortcode_demo($atts, $content=null, $code=""){
-		require_once 'mapDemo.php';
-		$demo = new WeatherContidionsMapDemo();
-		return $demo->printMap();
+		global $bcwc_demo;
+		return $bcwc_demo->printMap();
 	}
 
 	/* ADMINISTRACIÓN ***********************************************************/

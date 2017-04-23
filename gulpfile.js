@@ -46,6 +46,9 @@ var lib_src = [
 	lib_dir+'leaflet/dist/leaflet.js',
 	lib_dir+'leaflet-providers/leaflet-providers.js',
 ];
+var lib_css_src = [
+	lib_dir+'leaflet/dist/leaflet.css',
+];
 var lib_build = build_dir+'lib/';
 // var lib_target = src_dir+'mapDemo.php';
 // var lib_inject = lib_build +'*';
@@ -58,6 +61,9 @@ var image_build = build_dir+'img/';
 
 var fonts_src = src_dir+'fonts/*';
 var fonts_build = build_dir+'fonts/';
+
+var data_src = src_dir+'data/*';
+var data_build = build_dir+'data/';
 
 /*
 	TASKS ______________________________________________________________________
@@ -117,6 +123,10 @@ gulp.task('lib', function() {
 	gulp.src(lib_src)
 		.pipe(rename({suffix:'.min'}))
 		.pipe(uglify())
+		.pipe(gulp.dest(lib_build))
+
+	gulp.src(lib_css_src)
+		.pipe(cleanCSS({compatibility: 'ie9'}))
 		.pipe(gulp.dest(lib_build))
 });
 tasks.once.push('lib');
@@ -185,7 +195,6 @@ gulp.task('image_min_watch',['image_min','image_min_w']);
 tasks.once.push('image_min');
 // tasks.watch.push('image_min_w');
 
-
 /* FONTS ____________________________________________________________________________*/
 gulp.task('fonts', function() {
    gulp.src(fonts_src)
@@ -195,6 +204,17 @@ gulp.task('fonts_w', function() { gulp.watch(fonts_src,['fonts']);});
 gulp.task('fonts_watch',['fonts','fonts_w']);
 tasks.once.push('fonts');
 // tasks.watch.push('fonts_w');
+
+
+/* DATA ____________________________________________________________________________*/
+gulp.task('data', function() {
+   gulp.src(data_src)
+   .pipe(gulp.dest(data_build));
+});
+gulp.task('data_w', function() { gulp.watch(data_src,['data']);});
+gulp.task('data_watch',['data','data_w']);
+tasks.once.push('data');
+// tasks.watch.push('data_w');
 
 
 /* GENERAL ____________________________________________________________________________*/
