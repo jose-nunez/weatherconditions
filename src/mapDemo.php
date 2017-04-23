@@ -7,6 +7,10 @@
 	</head>
 	<body>
 		Holita
+
+
+		<!-- inject:js -->
+  		<!-- endinject -->
 	</body>
 </html>
 
