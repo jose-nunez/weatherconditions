@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta charset="<?php bloginfo( 'charset' ); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Weather Conditions</title>
-		<?php wp_head(); ?>
-	</head>
-	<body>
-		Holita
-		<script type="text/javascript" src="<?= BCWC_URL; ?>/lib/leaflet.min.js"></script>
-		<script type="text/javascript" src="<?= BCWC_URL; ?>/lib/leaflet-providers.min.js"></script>
-	</body>
-</html>
+<?php
+	class WeatherContidionsMapDemo{
+		function printMap(){
+
+			if(wp_style_is('bcwc_demo_css','registered') && !wp_style_is('bcwc_demo_css','enqueued')) wp_enqueue_style('bcwc_demo_css');
+			if(wp_script_is('bcwc_demo_js','registered') && !wp_script_is('bcwc_demo_js','enqueued')) wp_enqueue_script('bcwc_demo_js');
+			if(wp_script_is('leaflet','registered') && !wp_script_is('leaflet','enqueued')) wp_enqueue_script('leaflet');
+			if(wp_script_is('leaflet-providers','registered') && !wp_script_is('leaflet-providers','enqueued')) wp_enqueue_script('leaflet-providers');
+
+			
+			return ' 
+				<div class="bcwc-map-frame">
+					
+				</div>
+			';
+		}
+	}
+?>

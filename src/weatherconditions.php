@@ -35,11 +35,11 @@ class bcWeatherConditions{
 		$bcwc_radiacionSolar->loadStations();
 
 		add_option('bcwc_use_html5_location',true);
-		add_option('bcwc_demoId',true);
+		// add_option('bcwc_demoId',true);
 	}
 	function uninstall(){
 		delete_option('bcwc_use_html5_location');
-		delete_option('bcwc_demoId');
+		// delete_option('bcwc_demoId');
 		delete_option('bcwc_ca_stations');
 		delete_option('bcwc_rs_stations');
 	}
@@ -50,6 +50,7 @@ class bcWeatherConditions{
 		wp_register_style('bcwc_css',BCWC_URL.'css/style.css');
 		wp_register_script('bcwc_amin_js',BCWC_URL.'js/bc_weatherconditions_admin.min.js','jquery');
 		wp_register_script('bcwc_js',BCWC_URL.'js/bc_weatherconditions.min.js','jquery');
+
 
 		require_once 'calidadAireServices.php';global $bcwc_calidadAire; if(!$bcwc_calidadAire) $bcwc_calidadAire = new bcwc_calidadAireServices();
 		$bcwc_calidadAire->initServices();
@@ -65,13 +66,21 @@ class bcWeatherConditions{
 
 		add_action('widgets_init', array($this,'widgets'));
 		add_shortcode('bicicultura-weatherconditions',array($this,'shortcode'));
+		
+
+		
+		wp_register_script('bcwc_demo_js',BCWC_URL.'js/bc_weatherconditions_demo.min.js','jquery');
+		wp_register_style('bcwc_demo_css',BCWC_URL.'css/style_demo.css');
+		wp_register_script('leaflet',BCWC_URL.'lib/leaflet.min.js','jquery');
+		wp_register_script('leaflet-providers',BCWC_URL.'lib/leaflet-providers.min.js','jquery');
+		add_shortcode('bicicultura-weatherconditions-map',array($this,'shortcode_demo'));
 
 
-		add_filter('page_template',array($this, 'printDemo'));
+		// add_filter('page_template',array($this, 'printDemo'));
 
 	}
 	
-	function printDemo($single_template) {
+	/*function printDemo($single_template) {
 		global $post;
 
 		$page_id = get_option('bcwc_demoId');
@@ -80,7 +89,7 @@ class bcWeatherConditions{
 		}
 
 		return $single_template;
-	}
+	}*/
 	
 
 	/* SERVICES ************************************************************/
@@ -216,6 +225,13 @@ class bcWeatherConditions{
 		return $result.'</ul>';
 	}
 
+	// [bicicultura-weatherconditions-map]
+	function shortcode_demo($atts, $content=null, $code=""){
+		require_once 'mapDemo.php';
+		$demo = new WeatherContidionsMapDemo();
+		return $demo->printMap();
+	}
+
 	/* ADMINISTRACIÓN ***********************************************************/
 	function menu(){
 		add_menu_page('Bicicultura Weather Conditions', 'Weather Conditions', 'administrator', __FILE__, array($this,'options'),plugins_url('/img/icon_20.png', __FILE__));
@@ -223,7 +239,7 @@ class bcWeatherConditions{
 	}
 	function register_settings(){
 		register_setting('bcwc_setting','bcwc_use_html5_location');
-		register_setting('bcwc_setting', 'bcwc_demoId');
+		// register_setting('bcwc_setting', 'bcwc_demoId');
 	}
 	function options(){
 		if ( !current_user_can( 'manage_options' ) )  {

@@ -21,18 +21,15 @@ class AdminPage{
 		?>
 			<table class="table">
 				<tr valign="middle">
-					<!-- <th scope="row">Usar localización HTML5</th>
-					<td><input type="text" name="bcwc_use_html5_location" value="<?php echo $bcwc_use_html5_location; ?>" /></td>
-					<td>Si no sabes qué es esto, déjalo como está</td> -->
 					<label for="bcwc_use_html5_location">
 						<input name="bcwc_use_html5_location" type="checkbox" <?php echo $bcwc_use_html5_location?'checked="checked"':''; ?> />
 						Usar localización HTML5
 					</label>
 				</tr>
-				<tr valign="middle">
+				<!-- <tr valign="middle">
 					<th scope="row">ID de la página que mostrará la Demo</th>
 					<td><input type="text" name="bcwc_demoId" value="<?php echo $bcwc_demoId; ?>" /></td>
-				</tr>
+				</tr> -->
 			</table>
 			<?php submit_button();?>
 		</form>

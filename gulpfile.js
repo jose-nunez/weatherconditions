@@ -27,9 +27,13 @@ var src_dir = "src/";
 var build_dir = "E:/Dropbox/DESARROLLO/Wordpress/TEST/wp-content/plugins/weatherconditions/";
 
 var script_src = src_dir+'js/*.js';
-var script_admin_src = src_dir+'js/admin/*.js';
 var script_concat='bc_weatherconditions.js';
+var script_admin_src = src_dir+'js/admin/*.js';
 var script_admin_concat = 'bc_weatherconditions_admin.js';
+var script_demo_src = src_dir+'js/demo.js';
+var script_demo_concat = 'bc_weatherconditions_demo.js';
+
+
 var script_build = build_dir+'js/';
 
 var html_src = src_dir+'*.html';
@@ -73,6 +77,7 @@ gulp.task('script_err', function() {
 gulp.task('script', function() {
 	var scripts = [
 		'!'+script_admin_src,
+		'!'+script_demo_src,
 		script_src,
 	];
 
@@ -90,7 +95,14 @@ gulp.task('script', function() {
 		.pipe(rename({suffix:'.min'}))
 		.pipe(uglify())
 			.pipe(gulp.dest(script_build))
+	;
 
+	gulp.src(script_demo_src)
+		.pipe(concat(script_demo_concat))
+			.pipe(gulp.dest(script_build))
+		.pipe(rename({suffix:'.min'}))
+		.pipe(uglify())
+			.pipe(gulp.dest(script_build))
 	;
 });
 gulp.task('script_w', function(){gulp.watch(script_src,['script']);});
@@ -111,7 +123,7 @@ tasks.once.push('lib');
 
 /* PHP ____________________________________________________________________________*/
 
-gulp.task('php',['lib'],function() {
+gulp.task('php',function() {
 	var phps = [
 		// '!'+lib_target,
 		php_src,
