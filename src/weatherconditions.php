@@ -34,7 +34,7 @@ class bcWeatherConditions{
 		require_once 'radiacionSolarServices.php';global $bcwc_radiacionSolar; if(!$bcwc_radiacionSolar) $bcwc_radiacionSolar = new bcwc_radiacionSolarServices();
 		$bcwc_radiacionSolar->loadStations();
 
-		add_option('bcwc_use_html5_location',true);
+		add_option('bcwc_use_html5_location',false);
 		// add_option('bcwc_demoId',true);
 	}
 	function uninstall(){
@@ -229,10 +229,10 @@ class bcWeatherConditions{
 		return $result.'</ul>';
 	}
 
-	// [bicicultura-weatherconditions-map]
+	// [bicicultura-weatherconditions-map height=100% width=100%]
 	function shortcode_demo($atts, $content=null, $code=""){
 		global $bcwc_demo;
-		return $bcwc_demo->printMap();
+		return $bcwc_demo->printMap(isset($atts['height'])? $atts['height']:null,isset($atts['width'])? $atts['width']:null);
 	}
 
 	/* ADMINISTRACIÓN ***********************************************************/
