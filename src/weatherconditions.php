@@ -35,11 +35,11 @@ class bcWeatherConditions{
 		$bcwc_radiacionSolar->loadStations();
 
 		add_option('bcwc_use_html5_location',true);
-		// add_option('bcwc_demoId',true);
+		add_option('bcwc_demoId',true);
 	}
 	function uninstall(){
 		delete_option('bcwc_use_html5_location');
-		// delete_option('bcwc_demoId');
+		delete_option('bcwc_demoId');
 		delete_option('bcwc_ca_stations');
 		delete_option('bcwc_rs_stations');
 	}
@@ -73,27 +73,16 @@ class bcWeatherConditions{
 		wp_register_script('leaflet-providers',BCWC_URL.'lib/leaflet-providers.min.js','leaflet');
 		
 		wp_register_script('bcwc_demo_js',BCWC_URL.'js/bc_weatherconditions_demo.min.js','leaflet');
-		wp_register_style('bcwc_demo_css',BCWC_URL.'css/style_demo.css');
+		wp_register_style('bcwc_demo_css',BCWC_URL.'css/shortcode_demo.css');
+		wp_register_style('bcwc_template_css',BCWC_URL.'css/template_demo.css');
 		
 		require_once 'mapDemo.php';global $bcwc_demo; if(!$bcwc_demo) $bcwc_demo = new WeatherContidionsMapDemo();
 		$bcwc_demo->initServices();
 		add_shortcode('bicicultura-weatherconditions-map',array($this,'shortcode_demo'));
-
-
-		// add_filter('page_template',array($this, 'printDemo'));
+		// Agrega pagina principal_________________________
+		add_filter('page_template',array($bcwc_demo, 'pageTemplate'));
 
 	}
-	
-	/*function printDemo($single_template) {
-		global $post;
-
-		$page_id = get_option('bcwc_demoId');
-		if ($post->ID == $page_id) {
-			$single_template = dirname( __FILE__ ) . '/mapDemo.php';
-		}
-
-		return $single_template;
-	}*/
 	
 
 	/* SERVICES ************************************************************/
@@ -233,9 +222,9 @@ class bcWeatherConditions{
 	function shortcode_demo($atts, $content=null, $code=""){
 		global $bcwc_demo;
 
-		echo '<pre>'.print_r($atts,true).'</pre>';
+		// echo '<pre>'.print_r($atts,true).'</pre>';
 
-		return $bcwc_demo->printMap($atts['height'],$atts['width']);
+		return $bcwc_demo->printMap(isset($atts['height'])?$atts['height']:null,isset($atts['width'])?$atts['width']:null);
 	}
 
 	/* ADMINISTRACIÓN ***********************************************************/
@@ -245,7 +234,7 @@ class bcWeatherConditions{
 	}
 	function register_settings(){
 		register_setting('bcwc_setting','bcwc_use_html5_location');
-		// register_setting('bcwc_setting', 'bcwc_demoId');
+		register_setting('bcwc_setting', 'bcwc_demoId');
 	}
 	function options(){
 		if ( !current_user_can( 'manage_options' ) )  {

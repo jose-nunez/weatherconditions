@@ -26,10 +26,10 @@ class AdminPage{
 						Usar localización HTML5
 					</label>
 				</tr>
-				<!-- <tr valign="middle">
+				<tr valign="middle">
 					<th scope="row">ID de la página que mostrará la Demo</th>
 					<td><input type="text" name="bcwc_demoId" value="<?php echo $bcwc_demoId; ?>" /></td>
-				</tr> -->
+				</tr>
 			</table>
 			<?php submit_button();?>
 		</form>

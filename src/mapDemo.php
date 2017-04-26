@@ -8,9 +8,6 @@
 			if(wp_script_is('bcwc_demo_js','registered') && !wp_script_is('bcwc_demo_js','enqueued')) wp_enqueue_script('bcwc_demo_js');
 			if(wp_style_is('bcwc_demo_css','registered') && !wp_style_is('bcwc_demo_css','enqueued')) wp_enqueue_style('bcwc_demo_css');
 
-			
-			echo '<pre>'.print_r($height.' '.$width,true).'</pre>';	
-
 			return '
 				<div id="bcwc-map" style="height:'.$this->standarSize($height) .';width:'.$this->standarSize($width).'">
 					
@@ -40,5 +37,20 @@
 			$chilebounds = BCWC_URL . "data/chilebounds.geojson";
 			return file_get_contents($chilebounds);
 		}
+
+		function pageTemplate($single_template) {
+			global $post;
+
+			// echo '<pre>';print_r($post);echo '</pre>';exit;
+
+			if(wp_style_is('bcwc_template_css','registered') && !wp_style_is('bcwc_template_css','enqueued')) wp_enqueue_style('bcwc_template_css');
+
+			$page_id = get_option('bcwc_demoId');
+			if ($post->ID == $page_id) {
+				$single_template = dirname( __FILE__ ) . '/demo_template.php';
+			}
+			return $single_template;
+		}
+
 	}
 ?>
