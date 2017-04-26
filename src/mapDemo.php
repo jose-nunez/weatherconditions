@@ -1,6 +1,6 @@
 <?php
 	class WeatherContidionsMapDemo{
-		function printMap(){
+		function printMap($height='500px',$width='100%'){
 
 			if(wp_style_is('leaflet_css','registered') && !wp_style_is('leaflet_css','enqueued')) wp_enqueue_style('leaflet_css');
 			if(wp_script_is('leaflet','registered') && !wp_script_is('leaflet','enqueued')) wp_enqueue_script('leaflet');
@@ -9,11 +9,23 @@
 			if(wp_style_is('bcwc_demo_css','registered') && !wp_style_is('bcwc_demo_css','enqueued')) wp_enqueue_style('bcwc_demo_css');
 
 			
+			echo '<pre>'.print_r($height.' '.$width,true).'</pre>';	
+
 			return '
-				<div id="bcwc-map">
+				<div id="bcwc-map" style="height:'.$this->standarSize($height) .';width:'.$this->standarSize($width).'">
 					
 				</div>
 			';
+		}
+
+		function standarSize($dimention){
+			$dimention = ''.$dimention;
+			if(is_string($dimention) && strpos($dimention,'px')===false && strpos($dimention,'%')===false){
+				$val = intval($dimention);
+				if($val==0) $val=300; 
+				return ''. $val .'px';
+			}
+			else return $dimention;
 		}
 
 		function initServices(){

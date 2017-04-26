@@ -229,10 +229,13 @@ class bcWeatherConditions{
 		return $result.'</ul>';
 	}
 
-	// [bicicultura-weatherconditions-map]
+	// [bicicultura-weatherconditions-map height=100% width=100%]
 	function shortcode_demo($atts, $content=null, $code=""){
 		global $bcwc_demo;
-		return $bcwc_demo->printMap();
+
+		echo '<pre>'.print_r($atts,true).'</pre>';
+
+		return $bcwc_demo->printMap($atts['height'],$atts['width']);
 	}
 
 	/* ADMINISTRACIÓN ***********************************************************/
