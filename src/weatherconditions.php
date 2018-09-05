@@ -35,7 +35,7 @@ class bcWeatherConditions{
 		$bcwc_radiacionSolar->loadStations();
 
 		add_option('bcwc_use_html5_location',false);
-		// add_option('bcwc_demoId',true);
+		add_option('bcwc_demoId',true);
 	}
 	function uninstall(){
 		delete_option('bcwc_use_html5_location');
